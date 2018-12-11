@@ -18,6 +18,7 @@ public class ApplicationManager {
   private EventFiringWebDriver wd;
   private String browser;
   private HomePage homePage;
+  private  SearchResultPage searchResPage;
   private Header header;
 
 
@@ -47,6 +48,7 @@ public class ApplicationManager {
 //    sessionHelper = new SessionHelper(wd);
 //    sessionHelper.logIn(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
 homePage = new HomePage(wd);
+searchResPage = new SearchResultPage(wd);
   }
 
   public void stop() {
@@ -59,6 +61,10 @@ homePage = new HomePage(wd);
 
   public NavigationHelper getNavigationHelper() {
     return navigationHelper;
+  }
+
+  public SearchResultPage getSearchResultPage() {
+    return searchResPage;
   }
 
   public HomePage getHomePage() {

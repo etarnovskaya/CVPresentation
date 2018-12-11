@@ -31,6 +31,8 @@ public class HelperBase {
       return false;
     }
   }
-
+  public String getPageTitle(){
+    return wd.findElement(By.cssSelector("h1")).getText();
+  }
 
 }

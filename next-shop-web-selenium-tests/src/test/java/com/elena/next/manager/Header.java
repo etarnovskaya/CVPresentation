@@ -2,7 +2,6 @@ package com.elena.next.manager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -38,5 +37,14 @@ public class Header extends  HelperBase {
 
   public void  confirmLanguageSelection(){
     click(By.id("btnFlagSelectorShopNow"));
+  }
+
+  public void typeInSearchBar(String request) {
+    type(By.cssSelector("#sli_search_1"), request);
+  }
+
+
+  public void proceedToSearch() {
+    click(By.xpath("//input[@title='Search Items']"));
   }
 }
