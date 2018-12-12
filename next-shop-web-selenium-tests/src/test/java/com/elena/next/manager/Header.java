@@ -1,5 +1,6 @@
 package com.elena.next.manager;
 
+import com.elena.next.model.SearchBar;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -39,12 +40,24 @@ public class Header extends  HelperBase {
     click(By.id("btnFlagSelectorShopNow"));
   }
 
-  public void typeInSearchBar(String request) {
-    type(By.cssSelector("#sli_search_1"), request);
+  public void typeInSearchBar(SearchBar searchBar) {
+    type(By.cssSelector("#sli_search_1"), searchBar.getText());
   }
 
 
   public void proceedToSearch() {
     click(By.xpath("//input[@title='Search Items']"));
   }
+
+  public void checkItemCountInBasket() {
+    System.out.println(
+            wd.findElement(By.cssSelector(".BagSummary"))
+                    .getText());
+  }
+
+  public void clickOnBasketIcon() {
+    click(By.cssSelector(".BagSummary"));
+  }
+
+
 }

@@ -20,6 +20,8 @@ public class ApplicationManager {
   private HomePage homePage;
   private  SearchResultPage searchResPage;
   private Header header;
+  private  ItemHelper itemHelper;
+  private BasketHelper basketHelper;
 
 
   public ApplicationManager(String browser) {
@@ -27,7 +29,7 @@ public class ApplicationManager {
     properties = new Properties();
   }
 
-  public void start() throws IOException {
+  public void start()  {
      if(browser.equals(BrowserType.CHROME)){
       wd = new EventFiringWebDriver(new ChromeDriver());
     }else if (browser.equals(BrowserType.FIREFOX)){
@@ -43,12 +45,13 @@ public class ApplicationManager {
     wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
     navigationHelper = new NavigationHelper(wd);
     header = new Header(wd);
-
-   // navigationHelper.openSite("https://www.next.co.il/he");//properties.getProperty("web.Url"));
+    navigationHelper.openSite("https://www.next.co.il/he");//properties.getProperty("web.Url"));
 //    sessionHelper = new SessionHelper(wd);
 //    sessionHelper.logIn(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
 homePage = new HomePage(wd);
 searchResPage = new SearchResultPage(wd);
+itemHelper = new ItemHelper(wd);
+basketHelper = new BasketHelper(wd);
   }
 
   public void stop() {
@@ -69,5 +72,13 @@ searchResPage = new SearchResultPage(wd);
 
   public HomePage getHomePage() {
     return homePage;
+  }
+
+  public ItemHelper getItemHelper() {
+    return itemHelper;
+  }
+
+  public BasketHelper getBasketHelper() {
+    return basketHelper;
   }
 }

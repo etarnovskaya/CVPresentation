@@ -5,7 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class OpenSiteTest extends  TestBase{
-  @Test
+    @Test
   public void openSiteEnglishVersionFromHebrewPage(){
     app.getNavigationHelper().openSite("https://www.next.co.il/he");
     app.getHomePage().clickOnGoToEnglishVersionArea();
